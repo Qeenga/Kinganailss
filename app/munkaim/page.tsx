@@ -1,19 +1,16 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { ArrowUpRight, Play } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Munkáim | Kinga Nails',
-  description: 'Kinga Nails stílusválogatás és friss körömdizájnok Instagramon és TikTokon.',
+  description: 'Kinga Nails valódi vendégmunkái és körömdizájnjai Debrecenből.',
 };
 
-const tiles = [
-  { src: '/images/kinga-real-01.jpg', alt: 'Rózsaszín ombré francia köröm kristálydísszel', label: 'Pink French', className: 'portfolio-tall' },
-  { src: '/images/kinga-real-03.jpg', alt: 'Kék nyári körömdizájn részletgazdag díszítéssel', label: 'Ocean blue', className: 'portfolio-wide' },
-  { src: '/images/kinga-real-02.jpg', alt: 'Rózsaszín francia manikűr elegáns kéztartásban', label: 'Soft pink', className: '' },
-  { src: '/images/kinga-real-01.jpg', alt: 'Kristálydíszes rózsaszín köröm közelről', label: 'Crystal detail', className: 'portfolio-crop-left' },
-  { src: '/images/kinga-real-03.jpg', alt: 'Kék nyári körömdizájn közelről', label: 'Summer detail', className: 'portfolio-crop-detail' },
-];
+const works = Array.from({ length: 45 }, (_, index) => ({
+  src: `/images/munkak/kinga-munka-${String(index + 1).padStart(2, '0')}.jpg`,
+  alt: `Kinga Nails körömdizájn – valódi vendégmunka ${index + 1}`,
+}));
 
 export default function PortfolioPage() {
   return (
@@ -23,21 +20,21 @@ export default function PortfolioPage() {
           <p className="section-kicker light">Munkáim</p>
           <h1>Minden köröm<br /><em>egyedi történet.</em></h1>
         </div>
-        <p>A visszafogott nude árnyalatoktól a karakteres, mély tónusokig: olyan formát és részletet keresünk, amely igazán hozzád illik.</p>
+        <p>45 valódi vendégmunka a visszafogott nude árnyalatoktól a karakteres, részletgazdag szettekig.</p>
       </section>
 
-      <section className="portfolio-grid" aria-label="Köröm stílusgaléria">
-        {tiles.map((tile, index) => (
-          <figure key={`${tile.label}-${index}`} className={tile.className}>
-            <Image src={tile.src} alt={tile.alt} fill sizes="(max-width: 760px) 100vw, 50vw" />
-            <figcaption><span>0{index + 1}</span>{tile.label}</figcaption>
+      <section className="portfolio-grid" aria-label="Kinga Nails valódi körömmunkái">
+        {works.map((work, index) => (
+          <figure key={work.src}>
+            <Image
+              src={work.src}
+              alt={work.alt}
+              fill
+              priority={index < 6}
+              sizes="(max-width: 760px) 50vw, (max-width: 1100px) 50vw, 33vw"
+            />
           </figure>
         ))}
-        <a className="video-tile" href="https://www.tiktok.com/@kinganailartist" target="_blank" rel="noreferrer">
-          <Image src="/images/kinga-real-02.jpg" alt="Kinga Nails köröminspirációk a TikTokon" fill sizes="(max-width: 760px) 100vw, 50vw" />
-          <span className="play-button"><Play aria-hidden="true" fill="currentColor" /></span>
-          <div><small>Videós munkák</small><strong>TikTokon tovább <ArrowUpRight /></strong></div>
-        </a>
       </section>
 
       <section className="social-portfolio-note">

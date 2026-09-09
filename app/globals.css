@@ -294,23 +294,10 @@ h2 em { color: var(--primary); font-weight: 400; }
 .portfolio-hero { min-height: 520px; display: grid; grid-template-columns: 1fr .55fr; align-items: end; gap: 80px; background: #342b24; color: #f7f2e9; }
 .portfolio-hero h1 em { color: #d8bd88; }
 .portfolio-hero > p { color: #b8aa9d !important; margin-bottom: 12px !important; }
-.portfolio-grid { padding: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; background: #342b24; }
-.portfolio-grid figure, .video-tile { position: relative; min-height: 560px; margin: 0; overflow: hidden; background: #5b4b3f; }
-.portfolio-grid .portfolio-tall { min-height: 750px; }
-.portfolio-grid .portfolio-wide { min-height: 520px; margin-top: 100px; }
-.portfolio-grid img, .video-tile img { object-fit: cover; transition: transform .7s ease; }
-.portfolio-grid figure:hover img, .video-tile:hover img { transform: scale(1.025); }
-.portfolio-grid figcaption { position: absolute; inset: auto 0 0; display: flex; justify-content: space-between; padding: 50px 24px 22px; background: linear-gradient(transparent, rgba(30,21,16,.75)); color: white; font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; }
-.portfolio-crop-left img { object-position: 24% center; }
-.portfolio-crop-detail img { object-position: 70% center; transform: scale(1.18); }
-.video-tile { display: block; color: white; }
-.video-tile::after { content: ''; position: absolute; inset: 0; background: rgba(40,28,21,.28); }
-.play-button { position: absolute; z-index: 2; left: 50%; top: 50%; width: 78px; height: 78px; transform: translate(-50%,-50%); border: 1px solid rgba(255,255,255,.8); border-radius: 50%; display: grid; place-items: center; backdrop-filter: blur(8px); }
-.play-button svg { width: 24px; margin-left: 4px; }
-.video-tile > div { position: absolute; z-index: 2; inset: auto 24px 24px; display: flex; justify-content: space-between; align-items: end; }
-.video-tile small { letter-spacing: .15em; text-transform: uppercase; }
-.video-tile strong { display: flex; align-items: center; gap: 7px; }
-.video-tile strong svg { width: 16px; }
+.portfolio-grid { padding: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #342b24; }
+.portfolio-grid figure { position: relative; aspect-ratio: 1; margin: 0; overflow: hidden; background: #5b4b3f; }
+.portfolio-grid img { object-fit: cover; transition: transform .7s ease, filter .7s ease; }
+.portfolio-grid figure:hover img { transform: scale(1.025); filter: saturate(1.04); }
 .social-portfolio-note { padding: 75px max(22px, calc((100vw - 1240px) / 2)); display: grid; grid-template-columns: 60px 1fr auto; align-items: center; gap: 35px; }
 .social-portfolio-note > svg { width: 42px; height: 42px; color: var(--primary); }
 .social-big-mark { width: 48px; height: 48px; border: 1px solid var(--primary); display: grid; place-items: center; color: var(--primary); font-weight: 800; text-transform: uppercase; }
@@ -387,6 +374,7 @@ h2 em { color: var(--primary); font-weight: 400; }
   .price-group { gap: 30px; }
   .portfolio-hero { gap: 30px; }
   .portfolio-hero > p { max-width: 600px; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-panel { padding-inline: max(24px, calc((100vw - 680px)/2)); }
   .map-panel, .map-panel iframe { min-height: 620px; }
 }
@@ -419,8 +407,7 @@ h2 em { color: var(--primary); font-weight: 400; }
   .price-time { grid-row: 2; }
   .price-item strong { grid-row: 2; }
   .slim-cta { grid-template-columns: 1fr; gap: 12px; }
-  .portfolio-grid { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
-  .portfolio-grid figure, .portfolio-grid .portfolio-tall, .portfolio-grid .portfolio-wide, .video-tile { min-height: 520px; margin-top: 0; }
+  .portfolio-grid { padding: 8px; gap: 8px; }
   .social-portfolio-note { grid-template-columns: 42px 1fr; }
   .social-portfolio-note a { grid-column: 2; justify-self: start; }
   .article-card summary { grid-template-columns: 35px 1fr 40px; gap: 12px; padding-block: 32px; }
@@ -439,7 +426,6 @@ h2 em { color: var(--primary); font-weight: 400; }
   .contact-banner { padding-block: 72px; }
   .contact-actions .cream-button { width: 100%; }
   .price-group > header { grid-template-columns: 34px 1fr; }
-  .portfolio-grid figure, .portfolio-grid .portfolio-tall, .portfolio-grid .portfolio-wide, .video-tile { min-height: 440px; }
   .social-portfolio-note { padding-block: 55px; }
 }
 
