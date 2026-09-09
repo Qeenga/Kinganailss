@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import { bookingUrl } from '@/lib/site';
+import { MapPin, Phone } from 'lucide-react';
+import { bookingUrl, contact } from '@/lib/site';
 
 const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/kinga_nails_debrecen', mark: 'ig' },
@@ -12,7 +11,7 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-lead">
-        <Link className="footer-brand" href="/">Kinga <em>Nails</em></Link>
+        <div className="footer-brand">Kinga <em>Nails</em></div>
         <p>Precíz kéz- és lábápolás, tartós technikák és nyugodt figyelem — hét éve Debrecenben.</p>
         <div className="social-row">
           {socials.map(({ label, href, mark }) => (
@@ -24,9 +23,8 @@ export function SiteFooter() {
       </div>
       <div className="footer-column">
         <h2>Kapcsolat</h2>
-        <a href="tel:+36705516212"><Phone aria-hidden="true" /> +36 70 551 6212</a>
-        <a href="mailto:kinga.nailsart@gmail.com"><Mail aria-hidden="true" /> kinga.nailsart@gmail.com</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=T%C3%B3c%C3%B3skert+t%C3%A9r+5%2C+Debrecen" target="_blank" rel="noreferrer"><MapPin aria-hidden="true" /> 4026 Debrecen,<br />Tócóskert tér 5.</a>
+        <a href={contact.phoneHref}><Phone aria-hidden="true" /> {contact.phoneDisplay}</a>
+        <a href={contact.directionsUrl} target="_blank" rel="noreferrer"><MapPin aria-hidden="true" /> 4026 Debrecen,<br />Tócóskert tér 5.</a>
       </div>
       <div className="footer-column">
         <h2>Nyitvatartás</h2>

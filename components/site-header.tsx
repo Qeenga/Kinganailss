@@ -41,6 +41,7 @@ export function SiteHeader() {
         </a>
         <Button
           render={<a href={bookingUrl} target="_blank" rel="noreferrer" />}
+          nativeButton={false}
           className="gold-button header-booking"
         >
           Időpontfoglalás
@@ -63,7 +64,7 @@ export function SiteHeader() {
               ))}
             </nav>
             <div className="mobile-sheet-footer">
-              <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" />} className="gold-button">
+              <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" />} nativeButton={false} className="gold-button">
                 <CalendarDays aria-hidden="true" /> Időpontot foglalok
               </Button>
               <a href="tel:+36705516212"><Phone aria-hidden="true" /> +36 70 551 6212</a>

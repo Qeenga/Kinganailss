@@ -64,7 +64,7 @@ export default function ServicesPage() {
         <p className="section-kicker">Szolgáltatásaim</p>
         <h1>Gondos technika.<br /><em>Átlátható árak.</em></h1>
         <p>Minden alkalom a körmöd állapotának felmérésével és a kívánt forma egyeztetésével indul. Az árak az alapszolgáltatásra vonatkoznak.</p>
-        <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" />} className="gold-button">
+        <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" />} nativeButton={false} className="gold-button">
           Szabad időpontok <ArrowUpRight aria-hidden="true" />
         </Button>
       </section>
