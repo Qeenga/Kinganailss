@@ -1,17 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { CalendarDays, Menu, Phone } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { CalendarDays, Menu, Phone, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
 import { bookingUrl } from '@/lib/site';
 
 const navItems = [
@@ -23,6 +15,25 @@ const navItems = [
 ] as const;
 
 export function SiteHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className="site-header">
       <Link className="brand" href="/" aria-label="Kinga Nails kezdőlap">
@@ -40,38 +51,62 @@ export function SiteHeader() {
           <span>+36 70 551 6212</span>
         </a>
         <Button
-          render={<a href={bookingUrl} target="_blank" rel="noreferrer" />}
+          render={<a href={bookingUrl} target="_blank" rel="noreferrer" aria-label="Időpontfoglalás" />}
           nativeButton={false}
           className="gold-button header-booking"
         >
           Időpontfoglalás
         </Button>
 
-        <Sheet>
-          <SheetTrigger className="mobile-menu-button" aria-label="Menü megnyitása">
-            <Menu aria-hidden="true" />
-          </SheetTrigger>
-          <SheetContent className="mobile-sheet">
-            <SheetHeader className="mobile-sheet-header">
-              <SheetTitle><span className="brand">Kinga <span className="brand-script">Nails</span></span></SheetTitle>
-              <SheetDescription>Professzionális körömstúdió Debrecenben</SheetDescription>
-            </SheetHeader>
-            <nav className="mobile-nav" aria-label="Mobil navigáció">
+        <button
+          type="button"
+          className="mobile-menu-button"
+          aria-label="Menü megnyitása"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMenuOpen(true)}
+        >
+          <Menu aria-hidden="true" />
+        </button>
+      </div>
+
+      {isMenuOpen && (
+        <div className="mobile-menu-layer">
+          <button
+            type="button"
+            className="mobile-menu-backdrop"
+            aria-label="Menü bezárása"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          <dialog open className="mobile-sheet" aria-label="Mobil navigáció">
+            <button
+              type="button"
+              className="mobile-sheet-close"
+              aria-label="Menü bezárása"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <X aria-hidden="true" />
+            </button>
+            <div className="mobile-sheet-header">
+              <span className="brand">Kinga <span className="brand-script">Nails</span></span>
+              <p>Professzionális körömstúdió Debrecenben</p>
+            </div>
+            <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobil navigáció">
               {navItems.map(([label, href], index) => (
-                <SheetClose key={href} render={<Link href={href} />}>
+                <Link key={href} href={href} onClick={() => setIsMenuOpen(false)}>
                   <span>0{index + 1}</span>{label}
-                </SheetClose>
+                </Link>
               ))}
             </nav>
             <div className="mobile-sheet-footer">
-              <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" />} nativeButton={false} className="gold-button">
+              <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" aria-label="Időpontot foglalok" />} nativeButton={false} className="gold-button">
                 <CalendarDays aria-hidden="true" /> Időpontot foglalok
               </Button>
               <a href="tel:+36705516212"><Phone aria-hidden="true" /> +36 70 551 6212</a>
             </div>
-          </SheetContent>
-        </Sheet>
-      </div>
+          </dialog>
+        </div>
+      )}
     </header>
   );
 }
