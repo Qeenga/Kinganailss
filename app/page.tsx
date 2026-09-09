@@ -37,7 +37,7 @@ export default function Home() {
 
         <div className="hero-visual">
           <div className="hero-image-wrap">
-            <Image src="/images/hero-manicure.png" alt="Precíz manikűr készül a Kinga Nails szalonban" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
+            <Image src="/images/kinga-real-01.jpg" alt="Kinga Nails rózsaszín ombré francia körömszettje kristálydísszel" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
           </div>
           <div className="hero-note">
             <span className="note-monogram">KN</span>
@@ -49,7 +49,7 @@ export default function Home() {
 
       <section className="story-section section-shell" aria-labelledby="story-title">
         <div className="story-image-frame reveal-image">
-          <Image src="/images/gallery-nude-gold.png" alt="Natúr manikűr finom arany díszítéssel" fill sizes="(max-width: 800px) 100vw, 42vw" />
+          <Image src="/images/kinga-real-03.jpg" alt="Kék nyári körömdizájn a Kinga Nails munkái közül" fill sizes="(max-width: 800px) 100vw, 42vw" />
           <span className="vertical-caption">KINGA NAILS ART · DEBRECEN</span>
         </div>
         <div className="story-copy">
@@ -106,9 +106,9 @@ export default function Home() {
           <Link className="light-link" href="/munkaim">Munkáim megtekintése <ArrowUpRight aria-hidden="true" /></Link>
         </div>
         <div className="gallery-strip">
-          <figure className="gallery-tall"><Image src="/images/gallery-nude-gold.png" alt="Tejes natúr manikűr arany vonaldíszítéssel" fill sizes="38vw" /><figcaption>Soft gold · 01</figcaption></figure>
-          <figure><Image src="/images/gallery-burgundy.png" alt="Bordó gél lakk finom arany fóliával" fill sizes="32vw" /><figcaption>Velvet wine · 02</figcaption></figure>
-          <figure><Image src="/images/hero-manicure.png" alt="Natúr szalonmanikűr készítés közben" fill sizes="32vw" /><figcaption>Nude ritual · 03</figcaption></figure>
+          <figure className="gallery-tall"><Image src="/images/kinga-real-01.jpg" alt="Rózsaszín ombré francia köröm kristálydísszel" fill sizes="38vw" /><figcaption>Pink French · 01</figcaption></figure>
+          <figure><Image src="/images/kinga-real-03.jpg" alt="Kék nyári körömdizájn részletgazdag díszítéssel" fill sizes="32vw" /><figcaption>Ocean blue · 02</figcaption></figure>
+          <figure><Image src="/images/kinga-real-02.jpg" alt="Rózsaszín francia manikűr elegáns kéztartásban" fill sizes="32vw" /><figcaption>Soft pink · 03</figcaption></figure>
         </div>
       </section>
 

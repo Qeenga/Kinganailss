@@ -29,9 +29,9 @@ export default function ContactPage() {
           </Button>
 
           <div className="contact-socials">
-            <a href="https://www.instagram.com/kinga_nails_art" target="_blank" rel="noreferrer"><span className="tiktok-mark">ig</span> Instagram</a>
+            <a href="https://www.instagram.com/kinga_nails_debrecen" target="_blank" rel="noreferrer"><span className="tiktok-mark">ig</span> Instagram</a>
             <a href="https://www.tiktok.com/@kinganailartist" target="_blank" rel="noreferrer"><span className="tiktok-mark">T</span> TikTok</a>
-            <a href="https://www.facebook.com/share/1ASCRQYLDp/" target="_blank" rel="noreferrer"><span className="tiktok-mark">f</span> Facebook</a>
+            <a href="https://www.facebook.com/profile.php?id=100029819297219" target="_blank" rel="noreferrer"><span className="tiktok-mark">f</span> Facebook</a>
           </div>
         </div>
 

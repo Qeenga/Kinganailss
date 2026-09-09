@@ -3,9 +3,9 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { bookingUrl } from '@/lib/site';
 
 const socials = [
-  { label: 'Instagram', href: 'https://www.instagram.com/kinga_nails_art', mark: 'ig' },
+  { label: 'Instagram', href: 'https://www.instagram.com/kinga_nails_debrecen', mark: 'ig' },
   { label: 'TikTok', href: 'https://www.tiktok.com/@kinganailartist', mark: 'T' },
-  { label: 'Facebook', href: 'https://www.facebook.com/share/1ASCRQYLDp/', mark: 'f' },
+  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100029819297219', mark: 'f' },
 ];
 
 export function SiteFooter() {

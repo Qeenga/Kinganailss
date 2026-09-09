@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 const tiles = [
-  { src: '/images/gallery-nude-gold.png', alt: 'Tejes nude körmök finom arany vonalakkal', label: 'Soft gold', className: 'portfolio-tall' },
-  { src: '/images/gallery-burgundy.png', alt: 'Mélybordó körmök arany fóliadísszel', label: 'Velvet wine', className: 'portfolio-wide' },
-  { src: '/images/hero-manicure.png', alt: 'Natúr manikűr készítés közben', label: 'Nude ritual', className: '' },
-  { src: '/images/gallery-burgundy.png', alt: 'Bordó manikűr elegáns részletekkel', label: 'After dark', className: 'portfolio-crop-left' },
-  { src: '/images/gallery-nude-gold.png', alt: 'Finom gyöngydíszes natúr köröm', label: 'Pearl line', className: 'portfolio-crop-detail' },
+  { src: '/images/kinga-real-01.jpg', alt: 'Rózsaszín ombré francia köröm kristálydísszel', label: 'Pink French', className: 'portfolio-tall' },
+  { src: '/images/kinga-real-03.jpg', alt: 'Kék nyári körömdizájn részletgazdag díszítéssel', label: 'Ocean blue', className: 'portfolio-wide' },
+  { src: '/images/kinga-real-02.jpg', alt: 'Rózsaszín francia manikűr elegáns kéztartásban', label: 'Soft pink', className: '' },
+  { src: '/images/kinga-real-01.jpg', alt: 'Kristálydíszes rózsaszín köröm közelről', label: 'Crystal detail', className: 'portfolio-crop-left' },
+  { src: '/images/kinga-real-03.jpg', alt: 'Kék nyári körömdizájn közelről', label: 'Summer detail', className: 'portfolio-crop-detail' },
 ];
 
 export default function PortfolioPage() {
@@ -34,7 +34,7 @@ export default function PortfolioPage() {
           </figure>
         ))}
         <a className="video-tile" href="https://www.tiktok.com/@kinganailartist" target="_blank" rel="noreferrer">
-          <Image src="/images/hero-manicure.png" alt="Videós köröminspirációk a TikTokon" fill sizes="(max-width: 760px) 100vw, 50vw" />
+          <Image src="/images/kinga-real-02.jpg" alt="Kinga Nails köröminspirációk a TikTokon" fill sizes="(max-width: 760px) 100vw, 50vw" />
           <span className="play-button"><Play aria-hidden="true" fill="currentColor" /></span>
           <div><small>Videós munkák</small><strong>TikTokon tovább <ArrowUpRight /></strong></div>
         </a>
@@ -43,7 +43,7 @@ export default function PortfolioPage() {
       <section className="social-portfolio-note">
         <span className="social-big-mark" aria-hidden="true">ig</span>
         <div><p className="section-kicker">Friss munkák, valódi vendégek</p><h2>A legújabb szetteket az Instagramon találod.</h2></div>
-        <a href="https://www.instagram.com/kinga_nails_art" target="_blank" rel="noreferrer">@kinga_nails_art <ArrowUpRight /></a>
+        <a href="https://www.instagram.com/kinga_nails_debrecen" target="_blank" rel="noreferrer">@kinga_nails_debrecen <ArrowUpRight /></a>
       </section>
     </main>
   );
