@@ -45,7 +45,14 @@ export default function Home() {
 
         <div className="hero-visual">
           <div className="hero-image-wrap">
-            <Image src="/images/kinga-real-01.jpg" alt="Kinga Nails rózsaszín ombré francia körömszettje kristálydísszel" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
+            <Image
+              src="/images/kinga-portrait.jpg"
+              alt="Kinga, a Kinga Nails körömstúdió alapítója"
+              fill
+              priority
+              sizes="(max-width: 900px) 100vw, 52vw"
+              style={{ objectPosition: '35% center' }}
+            />
           </div>
           <div className="hero-note">
             <span className="note-monogram">KN</span>
