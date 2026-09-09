@@ -31,12 +31,12 @@ export default function Home() {
         <div className="hero-visual">
           <div className="hero-image-wrap">
             <Image
-              src="/images/munkak/kinga-munka-02.jpg"
-              alt="Elegáns, halvány rózsaszín francia köröm strasszköves részlettel, Kinga Nails munka"
+              src="/images/kinga-hero.jpg"
+              alt="Kinga, a Kinga Nails Art debreceni körömstúdió szakembere"
               fill
               priority
               sizes="(max-width: 900px) 100vw, 52vw"
-              style={{ objectPosition: 'center center' }}
+              style={{ objectPosition: '42% center' }}
             />
           </div>
           <div className="hero-note">
