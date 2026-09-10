@@ -1,6 +1,6 @@
 'use client';
+/* oxlint-disable next/no-html-link-for-pages -- Full page navigation keeps mobile links reliable on the hosted site. */
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { CalendarDays, Menu, Phone, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,13 +36,13 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="Kinga Nails kezdőlap">
+      <a className="brand" href="/" aria-label="Kinga Nails kezdőlap">
         <span>Kinga</span>
         <span className="brand-script">Nails</span>
-      </Link>
+      </a>
 
       <nav className="desktop-nav" aria-label="Fő navigáció">
-        {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        {navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
       </nav>
 
       <div className="header-actions">
@@ -93,9 +93,9 @@ export function SiteHeader() {
             </div>
             <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobil navigáció">
               {navItems.map(([label, href], index) => (
-                <Link key={href} href={href} onClick={() => setIsMenuOpen(false)}>
+                <a key={href} href={href}>
                   <span>0{index + 1}</span>{label}
-                </Link>
+                </a>
               ))}
             </nav>
             <div className="mobile-sheet-footer">
