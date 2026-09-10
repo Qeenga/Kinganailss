@@ -1,59 +1,95 @@
 import type { Metadata } from 'next';
-import { ArrowUpRight, Clock, Info } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { bookingUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Szolgáltatások és árak | Kinga Nails',
-  description: 'Manikűr, erősített gél lakk, műköröm építés és láb gél lakk aktuális árakkal Debrecenben.',
+  title: 'Szolgáltatások | Kinga Nails',
+  description: 'Manikűr, anyageltávolítás, erősített gél lakk, műköröm építés, töltés és láb gél lakk Debrecenben.',
+  alternates: { canonical: 'https://debrecenmukorom.hu/szolgaltatasok' },
 };
 
-const groups = [
+const services = [
   {
     number: '01',
-    title: 'Manikűr & eltávolítás',
-    intro: 'Gondos alapápolás és biztonságos anyageltávolítás a természetes köröm védelmével.',
-    items: [
-      { name: 'Manikűr', detail: 'Bőrápolás, körömfelület-tisztítás és kondicionálás', time: '30 perc', price: '6 000 Ft' },
-      { name: 'Anyageltávolítás', detail: 'Korábbi anyag kíméletes eltávolítása, alap manikűrrel', time: '45 perc', price: '8 500 Ft' },
+    title: 'Manikűr',
+    intro: 'Ápolt, rendezett természetes körmök, gondosan kialakított formával.',
+    description: 'A kezelés a kéz és a természetes körmök állapotának felmérésével kezdődik. A cél az egészséges, tiszta és esztétikus megjelenés, anyag felhelyezése nélkül.',
+    includes: [
+      'A körmök hosszának és formájának igazítása',
+      'A köröm körüli bőr és a körömsánc precíz tisztítása',
+      'A körömfelület kíméletes rendezése',
+      'Bőr- és körömápolás a kezelés befejezéseként',
     ],
+    bookingLabel: 'Manikűr foglalása',
   },
   {
     number: '02',
-    title: 'Erősített gél lakk',
-    intro: 'Tartós, rugalmas megerősítés a természetes körmön, precíz színfedéssel.',
-    items: [
-      { name: 'S méret · ujjbegyig', detail: 'Erősített gél lakk, egyszínű alapcsomag', time: '1 óra 45 perc', price: '10 000 Ft' },
-      { name: 'M méret · ujjbegynél hosszabb', detail: 'Erősített gél lakk hosszabb természetes körömre', time: '1 óra 45 perc', price: '10 500 Ft' },
+    title: 'Anyageltávolítás',
+    intro: 'A korábban viselt gél lakk vagy műköröm szakszerű eltávolítása.',
+    description: 'Az anyagot fokozatosan, a természetes köröm állapotához igazodva távolítom el. A kezelés után a körmök rendezett, ápolt állapotban maradnak.',
+    includes: [
+      'A meglévő anyag és a természetes köröm ellenőrzése',
+      'A régi anyag kíméletes visszavétele és eltávolítása',
+      'A természetes köröm hosszának és formájának rendezése',
+      'Alap manikűr és befejező ápolás',
     ],
+    bookingLabel: 'Anyageltávolítás foglalása',
   },
   {
     number: '03',
-    title: 'Műköröm építés',
-    intro: 'Személyre szabott hossz és forma, gondos statikai kialakítással és színnel.',
-    items: [
-      { name: 'Építés · S', detail: 'Rövid, kényelmes hossz', time: '2 óra', price: '12 500 Ft' },
-      { name: 'Építés · M', detail: 'Közepes, elegáns hossz', time: '1 óra 55 perc', price: '13 500 Ft' },
-      { name: 'Építés · L', detail: 'Hosszabb, karakteres forma', time: '2 óra 5 perc', price: '14 500 Ft' },
+    title: 'Erősített gél lakk',
+    intro: 'Tartós, mégis természetes hatású megerősítés a saját körmön.',
+    description: 'A rugalmas megerősítés segít megtartani a természetes köröm formáját, miközben egységes, fényes felületet ad. A kialakítást minden esetben a köröm hosszához és adottságaihoz igazítom.',
+    includes: [
+      'Precíz előkészítés és manikűr',
+      'A természetes körömhöz igazított megerősítő réteg',
+      'A forma és a felület gondos kialakítása',
+      'Egyszínű gél lakkozás és befejező ápolás',
     ],
+    options: ['S · ujjbegyig', 'M · ujjbegynél hosszabb'],
+    bookingLabel: 'Gél lakk foglalása',
   },
   {
     number: '04',
-    title: 'Műköröm töltés',
-    intro: 'A lenövés korrigálása és a forma újraegyensúlyozása legfeljebb háromhetes körmön.',
-    items: [
-      { name: 'Töltés · S', detail: 'Rövid köröm töltése', time: '1 óra 55 perc', price: '12 000 Ft' },
-      { name: 'Töltés · M', detail: 'Közepes köröm töltése', time: '2 óra 5 perc', price: '13 000 Ft' },
-      { name: 'Töltés · L', detail: 'Hosszú köröm töltése', time: '2 óra 10 perc', price: '14 000 Ft' },
+    title: 'Műköröm építés',
+    intro: 'Személyre szabott hossz és forma, stabil, arányos kialakítással.',
+    description: 'A kívánt forma és hossz egyeztetése után a körmöt a saját köröm adottságaihoz igazítva építem fel. Kiemelt figyelmet kap a tartósságot adó statika és az oldalnézetből is harmonikus forma.',
+    includes: [
+      'Forma- és hosszválasztás személyes egyeztetéssel',
+      'Manikűr és alapos előkészítés',
+      'A műköröm felépítése és statikai kialakítása',
+      'Reszelés, egyszínű felület és befejező ápolás',
     ],
+    options: ['S · rövid', 'M · közepes', 'L · hosszabb'],
+    bookingLabel: 'Műköröm építés foglalása',
   },
   {
     number: '05',
-    title: 'Láb gél lakk',
-    intro: 'Esztétikus, tartós gél lakkozás a lábkörmökön, alapos előkészítéssel.',
-    items: [
-      { name: 'Láb gél lakk', detail: 'Előkészítés és tartós egyszínű lakkozás', time: '1 óra 30 perc', price: '10 000 Ft' },
+    title: 'Műköröm töltés',
+    intro: 'A lenövés korrigálása, a forma és a tartás teljes felfrissítésével.',
+    description: 'Töltéskor nemcsak a lenött rész kap új anyagot: ellenőrzöm a meglévő körmök állapotát, majd újraegyensúlyozom a teljes szerkezetet. Jelentős lenövés vagy sérülés esetén új építés lehet indokolt.',
+    includes: [
+      'A meglévő anyag és a természetes köröm ellenőrzése',
+      'A lenőtt terület előkészítése és a felválások eltávolítása',
+      'A köröm szerkezetének, hosszának és formájának helyreállítása',
+      'Új egyszínű felület és befejező ápolás',
     ],
+    options: ['S · rövid', 'M · közepes', 'L · hosszabb'],
+    bookingLabel: 'Műköröm töltés foglalása',
+  },
+  {
+    number: '06',
+    title: 'Láb gél lakk',
+    intro: 'Esztétikus, tartós szín a lábkörmökön, precíz előkészítéssel.',
+    description: 'A kezelés során a lábkörmöket a gél lakkozáshoz készítem elő, majd vékony, egyenletes és tartós színréteg kerül rájuk. A szolgáltatás esztétikai körömápolást tartalmaz.',
+    includes: [
+      'A lábkörmök állapotának ellenőrzése',
+      'A hossz, a forma és a köröm körüli bőr rendezése',
+      'A körömlemez alapos előkészítése',
+      'Egyszínű gél lakkozás és befejező ápolás',
+    ],
+    bookingLabel: 'Láb gél lakk foglalása',
   },
 ];
 
@@ -62,41 +98,51 @@ export default function ServicesPage() {
     <main className="inner-page">
       <section className="page-hero services-page-hero">
         <p className="section-kicker">Szolgáltatásaim</p>
-        <h1>Gondos technika.<br /><em>Átlátható árak.</em></h1>
-        <p>Minden alkalom a körmöd állapotának felmérésével és a kívánt forma egyeztetésével indul. Az árak az alapszolgáltatásra vonatkoznak.</p>
+        <h1>Gondos technika.<br /><em>Személyre szabott ápolás.</em></h1>
+        <p>Minden alkalom a körmöd állapotának felmérésével és a kívánt forma egyeztetésével indul. Az online foglalóban egyszerűen kiválaszthatod a neked megfelelő szolgáltatást.</p>
         <Button render={<a href={bookingUrl} target="_blank" rel="noreferrer" />} nativeButton={false} className="gold-button">
-          Szabad időpontok <ArrowUpRight aria-hidden="true" />
+          Online időpontfoglalás <ArrowUpRight aria-hidden="true" />
         </Button>
       </section>
 
-      <section className="pricing-shell" aria-label="Szolgáltatások és árak">
-        {groups.map((group) => (
-          <article className="price-group" key={group.number}>
+      <section className="service-detail-shell" aria-label="Szolgáltatások részletes bemutatása">
+        {services.map((service) => (
+          <article className="service-detail-group" key={service.number}>
             <header>
-              <span>{group.number}</span>
-              <div><h2>{group.title}</h2><p>{group.intro}</p></div>
+              <span>{service.number}</span>
+              <div>
+                <h2>{service.title}</h2>
+                <p>{service.intro}</p>
+              </div>
             </header>
-            <div className="price-items">
-              {group.items.map((item) => (
-                <div className="price-item" key={item.name}>
-                  <div><h3>{item.name}</h3><p>{item.detail}</p></div>
-                  <span className="price-time"><Clock aria-hidden="true" /> {item.time}</span>
-                  <strong>{item.price}</strong>
+
+            <div className="service-detail-content">
+              <p>{service.description}</p>
+              <h3>A szolgáltatás tartalma</h3>
+              <ul className="service-includes">
+                {service.includes.map((item) => (
+                  <li key={item}><Check aria-hidden="true" /><span>{item}</span></li>
+                ))}
+              </ul>
+
+              {service.options && (
+                <div className="service-options" aria-label="Választható méretek">
+                  {service.options.map((option) => <span key={option}>{option}</span>)}
                 </div>
-              ))}
+              )}
+
+              <a className="service-booking-link" href={bookingUrl} target="_blank" rel="noreferrer">
+                {service.bookingLabel} <ArrowUpRight aria-hidden="true" />
+              </a>
             </div>
           </article>
         ))}
-        <div className="price-note">
-          <Info aria-hidden="true" />
-          <p><strong>Fontos tudnivaló:</strong> díszítés, túlhordás, sérült köröm javítása vagy extra anyageltávolítás esetén a végösszeg változhat. A foglaláskor jelöld a kért díszítést; az aktuális, részletes ár mindig a Minup rendszerben látható.</p>
-        </div>
       </section>
 
       <section className="slim-cta">
-        <p>Nem tudod, melyik szolgáltatást válaszd?</p>
-        <h2>Hívj, és segítek.</h2>
-        <a href="tel:+36705516212">+36 70 551 6212 <ArrowUpRight aria-hidden="true" /></a>
+        <p>Kiválasztottad a neked megfelelő szolgáltatást?</p>
+        <h2>Foglalj online egyszerűen.</h2>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">Időpontfoglalás <ArrowUpRight aria-hidden="true" /></a>
       </section>
     </main>
   );

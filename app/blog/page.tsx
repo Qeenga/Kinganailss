@@ -8,6 +8,7 @@ import { bookingUrl, contact } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Blog | Kinga Nails',
   description: 'Részletes, képes útmutatók körömápolásról, lenövésről, higiéniáról, formákról és modern körömtrendekről.',
+  alternates: { canonical: 'https://debrecenmukorom.hu/blog' },
 };
 
 export default function BlogPage() {

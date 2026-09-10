@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   return {
     title: `${post.title} | Kinga Nails`,
     description: post.excerpt,
+    alternates: { canonical: `https://debrecenmukorom.hu/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,

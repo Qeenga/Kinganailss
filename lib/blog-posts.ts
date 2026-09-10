@@ -111,7 +111,6 @@ export const blogPosts: BlogPost[] = [
         title: 'Tisztítás, fertőtlenítés és sterilizálás',
         paragraphs: [
           'A három fogalom nem ugyanaz. Az eszközökről először fizikailag el kell távolítani minden szennyeződést, ezt követi a megfelelő fertőtlenítési lépés, majd az arra alkalmas fém eszközök magas hőfokú sterilizálása. Egyik fázis sem helyettesíti a másikat.',
-          'A steril eszközök zárt csomagolásban várják a következő vendéget. A csomag csak a kezelés előtt kerül felbontásra, így a tiszta állapot a használatig megőrizhető.',
         ],
       },
       {

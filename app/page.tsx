@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowUpRight, Check, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,10 @@ const reviews = [
   { name: 'Csenge', text: '„Mindig olyan körmökkel távozok, amivel nagyon elégedett vagyok!”' },
   { name: 'Várközi Alexandra', text: '„A körmeim mindig gyönyörűek és tartósak.”' },
 ];
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://debrecenmukorom.hu/' },
+};
 
 export default function Home() {
   return (
@@ -50,10 +55,11 @@ export default function Home() {
       <section className="story-section section-shell" aria-labelledby="quality-title">
         <div className="story-image-frame">
           <Image
-            src="/images/munkak/kinga-munka-03.jpg"
-            alt="Kék, kézzel festett kagylómintás köröm a Kinga Nails stúdióból"
+            src="/images/munkak/kinga-munka-27.jpg"
+            alt="Nude-rózsaszín, virágdíszes körömszett a Kinga Nails stúdióból"
             fill
             sizes="(max-width: 900px) 84vw, 38vw"
+            style={{ objectFit: 'contain' }}
           />
           <span className="vertical-caption">EGYEDI RÉSZLETEK · KINGA NAILS ART</span>
         </div>

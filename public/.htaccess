@@ -1,0 +1,15 @@
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# Mindig a biztonságos, www nélküli fő domain jelenjen meg.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.debrecenmukorom\.hu$ [NC]
+RewriteRule ^ https://debrecenmukorom.hu%{REQUEST_URI} [R=301,L]
+
+# A statikusan elkészített oldalak szép, .html nélküli címei.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]

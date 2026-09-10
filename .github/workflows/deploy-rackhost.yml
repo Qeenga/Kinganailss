@@ -1,0 +1,62 @@
+name: Feltoltes a Rackhost tarhelyre
+
+on:
+  push:
+    branches: [main, github-main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rackhost-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Forraskod letoltese
+        uses: actions/checkout@v4
+
+      - name: pnpm beallitasa
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Node.js beallitasa
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Fuggosegek telepitese
+        run: pnpm install --frozen-lockfile
+
+      - name: Statikus honlap elkeszitese
+        run: pnpm build
+
+      - name: Rackhost kapcsolat ellenorzese
+        id: rackhost
+        env:
+          RACKHOST_SFTP_HOST: ${{ secrets.RACKHOST_SFTP_HOST }}
+          RACKHOST_SFTP_USERNAME: ${{ secrets.RACKHOST_SFTP_USERNAME }}
+          RACKHOST_SFTP_PASSWORD: ${{ secrets.RACKHOST_SFTP_PASSWORD }}
+        run: |
+          if [ -n "$RACKHOST_SFTP_HOST" ] && [ -n "$RACKHOST_SFTP_USERNAME" ] && [ -n "$RACKHOST_SFTP_PASSWORD" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::A honlap elkeszult, de a Rackhost SFTP adatok meg nincsenek beallitva."
+          fi
+
+      - name: Biztonsagos feltoltes a Rackhostra
+        if: steps.rackhost.outputs.ready == 'true'
+        env:
+          RACKHOST_SFTP_HOST: ${{ secrets.RACKHOST_SFTP_HOST }}
+          RACKHOST_SFTP_USERNAME: ${{ secrets.RACKHOST_SFTP_USERNAME }}
+          RACKHOST_SFTP_PASSWORD: ${{ secrets.RACKHOST_SFTP_PASSWORD }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes lftp
+          lftp -u "$RACKHOST_SFTP_USERNAME,$RACKHOST_SFTP_PASSWORD" "sftp://$RACKHOST_SFTP_HOST:22" -e "set sftp:auto-confirm yes; mirror --reverse --verbose --parallel=4 dist/client/ /web/debrecenmukorom.hu/; bye"
