@@ -38,7 +38,7 @@ export default function ContactPage() {
         <div className="map-panel">
           <iframe
             title="Kinga Nails Art Debrecen helye a Google Térképen"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2694.5951551377784!2d21.602380099999998!3d47.517275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47470f93fe35d63b%3A0x814f61e4dc5f699a!2sKinga%20Nails%20Art%20Debrecen!5e0!3m2!1shu!2shu!4v1789033682405!5m2!1shu!2shu"
+            src={contact.mapEmbedUrl}
             loading="eager"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
